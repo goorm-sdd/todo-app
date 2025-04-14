@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="app">
-        <header>
-            <h1>ToDo 앱</h1>
-            <button id="create-btn">새로운 todo 만들기</button>
-        </header>
-        <div class="todo-list" id="list">
-            <!-- <div class="item">
+      <header>
+        <h1><a href="/index.html">ToDos 앱</a></h1>
+        <div class="buttons">
+          <div>
+            <button id="create-btn">새로운 ToDo 추가하기</button>
+          </div>
+          <div>
+            <button id="create-btn">
+              <a href="#">달력</a>
+            </button>
+          </div>
+          <div>
+            <button id="create-btn">
+              <a href="#">프로필</a>
+            </button>
+          </div>
+        </div>
+      </header>
+      <div class="list-filter" id="home-filter">목록 필터링 넣을 자리</div>
+      <div class="todo-list" id="list">
+        <!-- <div class="item">
                 <input type="checkbox" />
                 <input type="text" value="todo 내용" disabled />
                 <div class="actions">
+                    <button class="material-icons">calendar</button>
                     <button class="material-icons">edit</button>
                     <button class="material-icons remove-btn">remove_circles</button>
                 </div>
             </div> -->
-        </div>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
