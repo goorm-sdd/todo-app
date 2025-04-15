@@ -1,4 +1,4 @@
-import {setupCalendarFeature} from "./js/Calender.js";
+import {setupCalendarFeature} from "./js/Calendar.js";
 
 const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
