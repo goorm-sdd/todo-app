@@ -1,3 +1,5 @@
+import {setupCalendarFeature} from "./js/Calender.js";
+
 const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
 
@@ -50,6 +52,8 @@ function createTodoElement(item) {
   const calendarBtnEl = document.createElement("button");
   calendarBtnEl.classList.add("material-icons", "calendar-btn");
   calendarBtnEl.innerText = "calendar_today";
+  //달력 아이콘 클릭 시 날짜 추가 가능
+  setupCalendarFeature(item, calendarBtnEl, actionsEl, saveToLocalStorage);
 
   const editBtnEl = document.createElement("button");
   editBtnEl.classList.add("material-icons");
