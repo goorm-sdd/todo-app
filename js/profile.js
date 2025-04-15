@@ -50,5 +50,5 @@ function handleFilterChange() {
 filter.addEventListener("change", handleFilterChange);
 
 window.addEventListener("DOMContentLoaded", () => {
-  handleFilterChange(); // 초기 렌더링도 필터 기준으로
+  handleFilterChange(); 
 });
