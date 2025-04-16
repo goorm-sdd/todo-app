@@ -5,18 +5,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDos - 프로필</title>
+    <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../styles/profile.css" />
   </head>
   <body>
-    <main class="container">
-      <header class="header">
-        <h1 class="title"><a class="tohome" href="../pages/index.html">ToDos 앱</a></h1>
-        <nav class="nav">
-          <a href="calendar.html">달력</a>
-          <a href="profile.html">프로필</a>
-        </nav>
+    <div class="app">
+      <header>
+        <h1><a href="./index.html">ToDos 앱</a></h1>
+        <div class="buttons">
+          <div>
+            <button id="create-btn">새로운 ToDo 추가하기</button>
+          </div>
+          <div>
+            <button id="create-btn">
+              <a href="./Calendar.html">달력</a>
+            </button>
+          </div>
+          <div>
+            <button id="create-btn">
+              <a href="../pages/profile.html">프로필</a>
+            </button>
+          </div>
+          <div>
+            <button id="share-btn">공유</button>
+          </div>
+        </div>
       </header>
-
       <div class="profile-section">
         <section class="avatar-section">
           <div class="avatar">사용자</div>
@@ -40,7 +54,7 @@
           </div>
         </section>
       </div>
-    </main>
+    </div>
     <script src="../js/profile.js"></script>
   </body>
 </html>

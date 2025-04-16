@@ -1,7 +1,9 @@
 import {todos} from "../script.js";
 
 //배열 text만 가져오기
-const textList = todos.map((item, id) => `${id + 1}. ${item.text}`).join('\n');
+const textList = todos.filter(item => item.text.trim() !== "")
+.map((item, id) => `${id + 1}. ${item.text}`)
+.join('\n');
 
 
 //share-btn 클릭 시 복사 및 완료 알림 (todos가 비어있을 시 복사하지 않음)
