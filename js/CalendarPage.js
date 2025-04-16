@@ -26,6 +26,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+function updateTodoTitle(dateStr) {
+    const [year, month, day] = dateStr.split("-");
+    const titleEl = document.getElementById("todo-list-title");
+    titleEl.innerText = `${year}년 ${parseInt(month)}월 ${parseInt(day)}일 할일 목록`;
+}
+
+function createDateCell(year, month, day) {
+    const td = document.createElement("td");
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    td.innerText = day;
+    td.dataset.date = dateStr;
+
+    td.addEventListener("click", () => {
+        console.log("클릭한 날짜:", dateStr);
+        highlightSelectedDate(td);
+        updateTodoTitle(dateStr);
+    });
+
+    return td;
+}
+
 function drawCalendar(year, month) {
     const container = document.getElementById("calendar-container");
     const title = document.getElementById("calendar-title");
@@ -55,46 +76,26 @@ function drawCalendar(year, month) {
 
     let row = document.createElement("tr");
     for (let i = 0; i < 7; i++) {
-        const td = document.createElement("td");
         if (i < firstDay) {
+            const td = document.createElement("td");
             td.innerText = "";
+            row.appendChild(td);
         } else {
-            td.innerText = dayCounter;
-
-            const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayCounter).padStart(2, "0")}`;
-            td.dataset.date = dateStr;
-
-            td.addEventListener("click", () => {
-                console.log("클릭한 날짜:", dateStr);
-                highlightSelectedDate(td);
-            });
-
-            dayCounter++;
+            row.appendChild(createDateCell(year, month, dayCounter++));
         }
-        row.appendChild(td);
     }
     tbody.appendChild(row);
 
     while (dayCounter <= lastDate) {
         row = document.createElement("tr");
         for (let i = 0; i < 7; i++) {
-            const td = document.createElement("td");
             if (dayCounter <= lastDate) {
-                td.innerText = dayCounter;
-
-                const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayCounter).padStart(2, "0")}`;
-                td.dataset.date = dateStr;
-
-                td.addEventListener("click", () => {
-                    console.log("클릭한 날짜:", dateStr);
-                    highlightSelectedDate(td);
-                });
-
-                dayCounter++;
+                row.appendChild(createDateCell(year, month, dayCounter++));
             } else {
+                const td = document.createElement("td");
                 td.innerText = "";
+                row.appendChild(td);
             }
-            row.appendChild(td);
         }
         tbody.appendChild(row);
     }
