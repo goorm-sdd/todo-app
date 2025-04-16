@@ -45,8 +45,8 @@ body, html {
 .calendar-layout {
     display: flex;
     justify-content: flex-start;
-    padding-left: 3rem;
-    padding-top: 2rem;
+    padding-left: 0rem;
+    padding-top: 1rem;
 }
 
 .calendar-box {
