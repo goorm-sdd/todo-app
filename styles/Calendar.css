@@ -98,3 +98,49 @@ body, html {
     border-radius: 6px;
     transition: background-color 0.2s;
 }
+
+/*특정 일자 할일 목록*/
+.todo-section {
+    flex: 1;
+    min-width: 250px;
+    padding-left: 0.5rem;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.todo-header h2 {
+    font-size: 1.2rem;
+    color: black;
+    flex: 1;
+    min-width: 300px;
+}
+
+.todo-header select {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid #65558f;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+}
+
+.date-todo-list {
+    width: 431px;
+}
+
+.date-todo-list div {
+    font-size: 1rem;
+    padding: 0.8rem;
+    background: #f4f4f4;
+    border: 1px solid #b3b3b3;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: black;
+
+    width: 100%;
+    box-sizing: border-box;
+}
