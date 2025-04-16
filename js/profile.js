@@ -1,6 +1,6 @@
-
 const list = document.getElementById("todo-list");
-const filter = document.getElementById("filter");
+const statusFilter = document.getElementById("statusFilter");
+const sortFilter = document.getElementById("sortFilter");
 
 function loadTodos() {
   const data = localStorage.getItem("my_todos");
@@ -30,25 +30,40 @@ function renderTodos(todos) {
   });
 }
 
-function filterTodos(allTodos, criteria) {
-  if (criteria === "completed") {
-    return allTodos.filter((t) => t.complete);
-  } else if (criteria === "pending") {
-    return allTodos.filter((t) => !t.complete);
-  } else {
-    return allTodos;
+// 필터링을 기존 페이지와 같게 수정 했습니당~~
+
+function filterTodos(allTodos, statusCriteria, sortCriteria) {
+  let filteredTodos = allTodos;
+
+  if (statusCriteria === "completed") {
+    filteredTodos = filteredTodos.filter((t) => t.complete);
+  } else if (statusCriteria === "notCompleted") {
+    filteredTodos = filteredTodos.filter((t) => !t.complete);
   }
+
+  if (sortCriteria === "created") {
+    filteredTodos.sort((a, b) => a.id - b.id);
+  } else if (sortCriteria === "due") {
+    filteredTodos.sort((a, b) => new Date(a.date) - new Date(b.date));
+  } else if (sortCriteria === "priority") {
+    // 중요도 순 정렬 로직 추가
+    // filteredTodos.sort((a, b)
+  }
+
+  return filteredTodos;
 }
 
 function handleFilterChange() {
-  const criteria = filter.value;
+  const statusCriteria = statusFilter.value;
+  const sortCriteria = sortFilter.value;
   const allTodos = loadTodos();
-  const filtered = filterTodos(allTodos, criteria);
+  const filtered = filterTodos(allTodos, statusCriteria, sortCriteria);
   renderTodos(filtered);
 }
 
-filter.addEventListener("change", handleFilterChange);
+statusFilter.addEventListener("change", handleFilterChange);
+sortFilter.addEventListener("change", handleFilterChange);
 
 window.addEventListener("DOMContentLoaded", () => {
-  handleFilterChange(); 
+  handleFilterChange();
 });
