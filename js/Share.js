@@ -1,6 +1,6 @@
 import {todos} from "../script.js";
 
-//배열 문자열화
+//배열 text만 가져오기
 const textList = todos.map((item, id) => `${id + 1}. ${item.text}`).join('\n');
 
 
