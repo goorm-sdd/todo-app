@@ -1,4 +1,5 @@
 let currentYear, currentMonth;
+let selectedTd = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     const today = new Date();
@@ -52,15 +53,24 @@ function drawCalendar(year, month) {
     const lastDate = new Date(year, month + 1, 0).getDate();
 
     let dayCounter = 1;
-    let row = document.createElement("tr");
 
-    // 첫 줄
+    let row = document.createElement("tr");
     for (let i = 0; i < 7; i++) {
         const td = document.createElement("td");
         if (i < firstDay) {
             td.innerText = "";
         } else {
-            td.innerText = dayCounter++;
+            td.innerText = dayCounter;
+
+            const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayCounter).padStart(2, "0")}`;
+            td.dataset.date = dateStr;
+
+            td.addEventListener("click", () => {
+                console.log("클릭한 날짜:", dateStr);
+                highlightSelectedDate(td);
+            });
+
+            dayCounter++;
         }
         row.appendChild(td);
     }
@@ -71,7 +81,17 @@ function drawCalendar(year, month) {
         for (let i = 0; i < 7; i++) {
             const td = document.createElement("td");
             if (dayCounter <= lastDate) {
-                td.innerText = dayCounter++;
+                td.innerText = dayCounter;
+
+                const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayCounter).padStart(2, "0")}`;
+                td.dataset.date = dateStr;
+
+                td.addEventListener("click", () => {
+                    console.log("클릭한 날짜:", dateStr);
+                    highlightSelectedDate(td);
+                });
+
+                dayCounter++;
             } else {
                 td.innerText = "";
             }
@@ -82,4 +102,12 @@ function drawCalendar(year, month) {
 
     table.appendChild(tbody);
     container.appendChild(table);
+}
+
+function highlightSelectedDate(td) {
+    if (selectedTd) {
+        selectedTd.classList.remove("selected-date");
+    }
+    td.classList.add("selected-date");
+    selectedTd = td;
 }

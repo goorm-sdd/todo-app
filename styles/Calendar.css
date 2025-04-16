@@ -85,8 +85,16 @@ body, html {
     width: 40px;
     height: 40px;
     color: #333333;
+    cursor: pointer;
 }
 
 .calendar-table th {
     background-color: #f0f0f0;
+}
+
+.selected-date {
+    background-color: #b7e2ff;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.2s;
 }
