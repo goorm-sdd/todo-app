@@ -102,6 +102,15 @@ function drawCalendar(year, month) {
 
     table.appendChild(tbody);
     container.appendChild(table);
+
+    const today = new Date();
+    const todayStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+    const todayCell = container.querySelector(`td[data-date="${todayStr}"]`);
+
+    if (todayCell) {
+        highlightSelectedDate(todayCell);
+        updateTodoTitle(todayStr);
+    }
 }
 
 function highlightSelectedDate(td) {
