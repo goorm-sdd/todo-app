@@ -1,5 +1,6 @@
 let currentYear, currentMonth;
 let selectedTd = null;
+let selectedDateStr = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     const today = new Date();
@@ -42,6 +43,11 @@ function createDateCell(year, month, day) {
         console.log("클릭한 날짜:", dateStr);
         highlightSelectedDate(td);
         updateTodoTitle(dateStr);
+
+        const allTodos = loadTodos();
+        const criteria = filter.value;
+        const filtered = filterTodos(allTodos, criteria).filter(t => t.date === dateStr);
+        renderTodos(filtered);
     });
 
     return td;
@@ -110,6 +116,12 @@ function drawCalendar(year, month) {
     if (todayCell) {
         highlightSelectedDate(todayCell);
         updateTodoTitle(todayStr);
+        selectedDateStr = todayStr;
+
+        const allTodos = loadTodos();
+        const criteria = filter.value;
+        const filtered = filterTodos(allTodos, criteria).filter(t => t.date === todayStr);
+        renderTodos(filtered);
     }
 }
 
@@ -119,6 +131,7 @@ function highlightSelectedDate(td) {
     }
     td.classList.add("selected-date");
     selectedTd = td;
+    selectedDateStr = td.dataset.date;
 }
 
 
@@ -167,8 +180,17 @@ function filterTodos(allTodos, criteria) {
 function handleFilterChange() {
     const criteria = filter.value;
     const allTodos = loadTodos();
-    const filtered = filterTodos(allTodos, criteria);
+    const date = selectedDateStr || formatDate(new Date());
+    const filtered = filterTodos(allTodos, criteria).filter(t => t.date === date);
+
     renderTodos(filtered);
+}
+
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
 }
 
 filter.addEventListener("change", handleFilterChange);
