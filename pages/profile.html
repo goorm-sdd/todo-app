@@ -1,0 +1,46 @@
+<!-- File: pages/profile.html -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDos - 프로필</title>
+    <link rel="stylesheet" href="../styles/profile.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1 class="title"><a class="tohome" href="../pages/index.html">ToDos 앱</a></h1>
+        <nav class="nav">
+          <a href="calendar.html">달력</a>
+          <a href="profile.html">프로필</a>
+        </nav>
+      </header>
+
+      <div class="profile-section">
+        <section class="avatar-section">
+          <div class="avatar">사용자</div>
+          <h2 class="username">사용자 이름</h2>
+        </section>
+        <section class="todo-section">
+          <div class="todo-header">
+            <h2>작성한 할일 목록</h2>
+            <select id="filter">
+              <option value="all">모든 항목</option>
+              <option value="completed">완료된 항목</option>
+              <option value="pending">대기 중인 항목</option>
+            </select>
+          </div>
+
+          <div id="todo-list" class="todo-list"></div>
+
+          <div class="share-section">
+            <span>공유하기</span>
+            <hr class="divider" />
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="../js/profile.js"></script>
+  </body>
+</html>
