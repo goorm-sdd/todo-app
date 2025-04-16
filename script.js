@@ -1,4 +1,5 @@
-import {setupCalendarFeature} from "./js/Calendar.js";
+import { setupCalendarFeature } from "./js/Calendar.js";
+import { initializeFiltering } from "./js/Filtering.js";
 
 const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
@@ -29,7 +30,7 @@ function createNewTodo() {
   saveToLocalStorage();
 }
 
-function createTodoElement(item) {
+export function createTodoElement(item) {
   const itemEl = document.createElement("div");
   itemEl.classList.add("item");
 
@@ -126,12 +127,7 @@ function loadFromLocalStorage() {
 function displayTodos() {
   loadFromLocalStorage();
 
-  for (let i = 0; i < todos.length; i++) {
-    const item = todos[i];
-    const { itemEl } = createTodoElement(item);
-
-    list.append(itemEl);
-  }
+  initializeFiltering();
 }
 
 displayTodos();
