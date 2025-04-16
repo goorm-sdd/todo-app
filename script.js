@@ -3,7 +3,7 @@ import {setupCalendarFeature} from "./js/Calendar.js";
 const list = document.getElementById("list");
 const createBtn = document.getElementById("create-btn");
 
-let todos = [];
+export let todos = [];
 
 createBtn.addEventListener("click", createNewTodo);
 
