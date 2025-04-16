@@ -33,6 +33,14 @@ button a {
   color: black;
 }
 
+hr {
+  border-width: 1.5px;
+  margin-bottom: 15px;
+  border-style: solid;
+  color: #425f85;
+  border-radius: 50%;
+}
+
 .app {
   width: 100%;
   max-width: 768px;
@@ -146,4 +154,8 @@ button a {
 
 .actions button:last-of-type {
   margin-right: 0;
+}
+
+.list-title-h2 {
+  color: #000000;
 }

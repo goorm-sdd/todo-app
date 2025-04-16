@@ -38,20 +38,25 @@
 
       <!-- 필터링 위치 -->
       <section id="filter-ui" class="filteringCss">
-        <label for="statusFilter" class="visually-hidden">상태</label>
-        <select id="statusFilter">
-          <option value="all">전체</option>
-          <option value="completed">완료</option>
-          <option value="notCompleted">미완료</option>
-        </select>
+        <div><h2 class="list-title-h2">작성한 할일 목록</h2></div>
+        <div>
+          <label for="statusFilter" class="visually-hidden">상태</label>
+          <select id="statusFilter">
+            <option value="all">전체</option>
+            <option value="completed">완료</option>
+            <option value="notCompleted">미완료</option>
+          </select>
 
-        <label for="sortFilter" class="visually-hidden">정렬</label>
-        <select id="sortFilter">
-          <option value="created">작성일자 순</option>
-          <option value="due">마감일자 순</option>
-          <option value="priority">중요도 순</option>
-        </select>
+          <label for="sortFilter" class="visually-hidden">정렬</label>
+          <select id="sortFilter">
+            <option value="created">작성일자 순</option>
+            <option value="due">마감일자 순</option>
+            <option value="priority">중요도 순</option>
+          </select>
+        </div>
       </section>
+
+      <hr />
 
       <div class="todo-list" id="list">
         <!-- <div class="item">
