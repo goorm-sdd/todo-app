@@ -1,19 +1,37 @@
+let currentYear, currentMonth;
+
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("calendar-container");
-
     const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth(); // 0-based
+    currentYear = today.getFullYear();
+    currentMonth = today.getMonth();
 
-    drawCalendar(container, currentYear, currentMonth);
+    drawCalendar(currentYear, currentMonth);
+
+    document.getElementById("prev-month").addEventListener("click", () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        drawCalendar(currentYear, currentMonth);
+    });
+
+    document.getElementById("next-month").addEventListener("click", () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        drawCalendar(currentYear, currentMonth);
+    });
 });
 
-function drawCalendar(container, year, month) {
-    container.innerHTML = "";
+function drawCalendar(year, month) {
+    const container = document.getElementById("calendar-container");
+    const title = document.getElementById("calendar-title");
 
-    const title = document.createElement("h3");
     title.innerText = `${year}년 ${month + 1}월`;
-    container.appendChild(title);
+    container.innerHTML = "";
 
     const table = document.createElement("table");
     table.classList.add("calendar-table");
@@ -33,9 +51,10 @@ function drawCalendar(container, year, month) {
     const firstDay = new Date(year, month, 1).getDay();
     const lastDate = new Date(year, month + 1, 0).getDate();
 
-    let row = document.createElement("tr");
     let dayCounter = 1;
+    let row = document.createElement("tr");
 
+    // 첫 줄
     for (let i = 0; i < 7; i++) {
         const td = document.createElement("td");
         if (i < firstDay) {
@@ -48,7 +67,7 @@ function drawCalendar(container, year, month) {
     tbody.appendChild(row);
 
     while (dayCounter <= lastDate) {
-        const row = document.createElement("tr");
+        row = document.createElement("tr");
         for (let i = 0; i < 7; i++) {
             const td = document.createElement("td");
             if (dayCounter <= lastDate) {
