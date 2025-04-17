@@ -48,6 +48,7 @@ export function createTodoElement(item) {
   const inputEl = document.createElement("input");
   inputEl.type = "text";
   inputEl.value = item.text;
+  inputEl.classList.add("list-title-input");
   inputEl.setAttribute("disabled", "");
 
   const memoEl = document.createElement("input");
@@ -117,7 +118,6 @@ export function createTodoElement(item) {
     saveToLocalStorage();
   });
 
- 
   extrainput.append(inputEl);
   extrainput.append(memoEl);
 
