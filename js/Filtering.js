@@ -26,9 +26,6 @@ function filterTodos(allTodos, statusCriteria, sortCriteria) {
     filteredTodos.sort((a, b) => a.id - b.id);
   } else if (sortCriteria === "due") {
     filteredTodos.sort((a, b) => new Date(a.date) - new Date(b.date));
-  } else if (sortCriteria === "priority") {
-    // 중요도 순 정렬 로직 추가
-    // filteredTodos.sort((a, b) =>
   }
 
   return filteredTodos;
