@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -158,4 +159,25 @@ hr {
 
 .list-title-h2 {
   color: #000000;
+}
+.extrainput {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+  width: 100%; 
+  align-items: stretch; 
+}
+.memo-input {
+  border: none;
+  outline: none;
+  font-weight: 400;
+  color: black;
+  font-size: 16px;
+  border-bottom: 1px solid #adadad;
+  padding-bottom: 2px;
+  width: calc(100% - 25px); 
+  margin-left: 10px;  
+  margin-right: 10px;
+  flex-grow: 1;
 }

@@ -34,6 +34,9 @@ export function createTodoElement(item) {
   const itemEl = document.createElement("div");
   itemEl.classList.add("item");
 
+  const extrainput = document.createElement("div");
+  extrainput.classList.add("extrainput");
+
   const checkboxEl = document.createElement("input");
   checkboxEl.type = "checkbox";
   checkboxEl.checked = item.complete;
@@ -46,6 +49,21 @@ export function createTodoElement(item) {
   inputEl.type = "text";
   inputEl.value = item.text;
   inputEl.setAttribute("disabled", "");
+
+  const memoEl = document.createElement("input");
+  memoEl.type = "text";
+  memoEl.classList.add("memo-input");
+
+  if (!item.memo) item.memo = "";
+  memoEl.value = item.memo;
+
+  memoEl.addEventListener("input", () => {
+    item.memo = memoEl.value;
+  });
+
+  memoEl.addEventListener("blur", () => {
+    saveToLocalStorage();
+  });
 
   const actionsEl = document.createElement("div");
   actionsEl.classList.add("actions");
@@ -99,8 +117,12 @@ export function createTodoElement(item) {
     saveToLocalStorage();
   });
 
+ 
+  extrainput.append(inputEl);
+  extrainput.append(memoEl);
+
   itemEl.append(checkboxEl);
-  itemEl.append(inputEl);
+  itemEl.append(extrainput);
   itemEl.append(actionsEl);
 
   actionsEl.append(calendarBtnEl);
