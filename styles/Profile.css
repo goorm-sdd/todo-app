@@ -1,9 +1,8 @@
-
 .container {
   max-width: 768px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  display:block;
+  display: block;
 }
 
 .header {
@@ -31,7 +30,7 @@
 }
 
 .nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
@@ -39,7 +38,6 @@
   height: 1px;
   background-color: black;
   display: block;
-
 }
 
 .profile-section {

@@ -1,9 +1,9 @@
 .filteringCss {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   justify-content: end;
   align-items: center;
-  margin: 50px 15px 20px 5px;
+  margin: 32px 0px 20px 5px;
 }
 
 .filteringCss select {
